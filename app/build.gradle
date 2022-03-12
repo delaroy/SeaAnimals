@@ -1,0 +1,117 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+
+    defaultConfig {
+        applicationId "com.bamidele.seaanimals"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    kapt {
+        useBuildCache = true
+        javacOptions {
+            // Increase the max count of errors from annotation processors.
+            // Default is 100.
+            option("-Xmaxerrs", 500)
+        }
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation deps.core_ktx
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.constraint_layout
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    implementation deps.recyclerview
+    implementation deps.cardview
+    testImplementation deps.junit
+    testImplementation deps.atsl.core
+    androidTestImplementation deps.atsl.ext_junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+
+    //Android paging
+    implementation deps.paging_runtime
+
+    // Dagger Hilt
+    implementation deps.hilt.runtime
+    kapt deps.hilt.kapt
+    implementation deps.hilt.lifecycle_viewmodel
+    kapt deps.hilt.compiler
+    testImplementation deps.hilt.test
+    kaptTest deps.hilt.compiler
+
+    // Coroutines
+    implementation deps.coroutines.core
+    testImplementation deps.coroutines.core
+    implementation deps.coroutines.android
+
+    // Coroutine Lifecycle Scopes
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.runtime
+
+    // Navigation Components
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    implementation deps.navigation.runtime_ktx
+
+    //Retrofit
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.retrofit.scalar
+    implementation deps.retrofit.moshi
+
+    //Image Rendering Glide
+    implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+
+    //Splash Screen
+    implementation deps.splash
+
+    //Mockito and Robolectric and Coroutines test
+    testImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+    testImplementation deps.mockito.inline
+    testImplementation deps.mockito.kotlin
+    testImplementation deps.robolectric
+    testImplementation deps.coroutines.test
+
+    testImplementation deps.mock_web_server
+    testImplementation deps.arch_core.testing
+    androidTestImplementation deps.rules
+}

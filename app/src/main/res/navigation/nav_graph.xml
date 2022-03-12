@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.bamidele.seaanimals.presentation.ui.SeaAnimalsList"
+        tools:layout="@layout/sea_animals_list">
+        <action
+            android:id="@+id/action_FirstFragment_to_seaAnimalsDetails"
+            app:destination="@id/seaAnimalsDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/seaAnimalsDetails"
+        android:name="com.bamidele.seaanimals.presentation.ui.SeaAnimalsDetails"
+        tools:layout="@layout/sea_animals_details" />
+</navigation>
