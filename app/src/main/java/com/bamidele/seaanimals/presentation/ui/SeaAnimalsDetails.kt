@@ -3,6 +3,8 @@ package com.bamidele.seaanimals.presentation.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -19,6 +21,7 @@ import com.bamidele.seaanimals.util.TITLE_NAME
 class SeaAnimalsDetails: Fragment() {
     private var _binding: SeaAnimalsDetailsBinding? = null
     private val binding get() = _binding!!
+    private var title_name = ""
     private val seaAnimalsDetailsAdapter: SeaAnimalsDetailsAdapter by lazy { SeaAnimalsDetailsAdapter() }
 
     override fun onCreateView(
@@ -29,16 +32,21 @@ class SeaAnimalsDetails: Fragment() {
         _binding = SeaAnimalsDetailsBinding.inflate(inflater, container, false)
 
         binding.seaAnimalDetailsRecyclerview.apply {
-            layoutManager = LinearLayoutManager(context)
             adapter = seaAnimalsDetailsAdapter
         }
 
         if (arguments != null) {
             val value = arguments?.getParcelable<SeaAnimalsResponse>(SEA_ANIMALS_DATA)
+            title_name = arguments?.getString(TITLE_NAME)!!
             if (value!!.imageGallery != null) {
+                binding.errorMessage.visibility = GONE
                 val image = value.imageGallery!!.toList()
                 seaAnimalsDetailsAdapter.submitList(image)
+            } else {
+                binding.errorMessage.visibility = VISIBLE
             }
+        } else {
+            binding.errorMessage.visibility = VISIBLE
         }
 
         return binding.root
@@ -46,7 +54,6 @@ class SeaAnimalsDetails: Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val title = arguments?.getString(TITLE_NAME)
-        (activity as MainActivity?)!!.setTitle(title)
+        (activity as MainActivity?)!!.setTitle(title_name)
     }
 }

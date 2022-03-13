@@ -75,7 +75,9 @@ class SeaAnimalsList : Fragment(), SeaAnimalsAdapter.RecyclerViewClickListener {
     }
 
     private fun showError(error: String) {
-        //Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+        if (!error.contains("Conversion error")){
+            Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun showProgress() {

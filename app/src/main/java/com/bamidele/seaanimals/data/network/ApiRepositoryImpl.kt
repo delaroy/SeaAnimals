@@ -10,6 +10,5 @@ class ApiRepositoryImpl(private val services: ApiServices) : ApiRepository {
 
     override suspend fun fetchSeaAnimals(): Flow<List<SeaAnimalsResponse>> = flow {
         emit(services.fetchSeaAnimals())
-        Log.d("tjson1", Gson().toJson(services.fetchSeaAnimals()).toString())
     }
 }
