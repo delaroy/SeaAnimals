@@ -16,10 +16,10 @@ The second display a list of content of the image gallery.
 * Uses [Kotlin Coroutines Test](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/) to unit test Kotlin Coroutines
 
 ## How to run the app and test
-This app runs on all Android device not lower than SDK 21. Launch apk on Android device make sure there is internet availability to fetch data from the web service.
+This app runs on all Android devices not lower than SDK 21. Make sure there is internet availability to fetch data from the web service,
 the first screen fetched is the list of sea animals details a click of an item on the list, navigates you to the detail page of that particular sea animal displaying its image gallery.
 
-Running this app unit testing is quite simple cclick on the test folder on the file tree in Android Studio after right click for options you see the run icon click to run the test and wait for the result.
+Running this app unit testing is quite simple click on the test folder on the file tree in Android Studio after, right click for options you see the run icon click to run the test and wait for the result.
 
 ## Future Improvements
 + Code Structuring
