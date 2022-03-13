@@ -21,8 +21,8 @@ the first screen fetched is the list of sea animals details a click of an item o
 
 Running this app unit testing is quite simple cclick on the test folder on the file tree in Android Studio after right click for options you see the run icon click to run the test and wait for the result.
 
-##Future Improvements
-+Code Structuring
+## Future Improvements
++ Code Structuring
 The API response need to be more consistent in data struture
 
 + Additional Features
